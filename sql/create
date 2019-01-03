@@ -1,0 +1,60 @@
+-- 商品
+CREATE TABLE product (
+  id varchar(50) NOT NULL COMMENT '产品编号',
+  bar_code varchar(30) DEFAULT NULL COMMENT '条形码',
+  name varchar(50) NOT NULL COMMENT '产品名称',
+  category_id varchar(50) NOT NULL COMMENT '产品类别',
+  stock_warn decimal(10,2) COMMENT '库存预警',
+  unit varchar(20) NOT NULL COMMENT '单位',
+  create_time datetime COMMENT '创建时间',
+	create_user varchar(20) COMMENT '创建者',
+  update_time datetime COMMENT '修改时间',
+	update_user varchar(20) COMMENT '更新者',
+  state varchar(20) COMMENT '状态',
+	memo varchar(200) COMMENT '备注',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- 随便插点数据
+insert product (id,bar_code,name,category_id,stock_warn,unit)
+VALUES
+('1','3322','袜子1','2',10,'个'),
+('2','3322','袜子2','2',10,'个'),
+('3','3322','袜子3','2',10,'个'),
+('4','3322','袜子4','2',10,'个'),
+('5','3322','袜子5','2',10,'个'),
+('6','3322','袜子6','2',10,'个'),
+('7','3322','袜子7','2',10,'个'),
+('8','3322','袜子8','2',10,'个'),
+('9','3322','袜子9','2',10,'个'),
+('10','3322','袜子10','2',10,'个'),
+('11','3322','袜子11','2',10,'个'),
+('12','3322','袜子12','2',10,'个'),
+('13','3322','袜子13','2',10,'个');
+
+-- 销售订单
+CREATE TABLE sales_order (
+  id varchar(50) NOT NULL COMMENT '销售订单编号',
+  product_price decimal(10,2) COMMENT '商品总价',
+  transport_fare decimal(10,2) COMMENT '运费',
+  extra_price decimal(10,2) COMMENT '其他费用：如满减，补差价等',
+  total_price decimal(10,2) COMMENT '总价',
+  pay_type varchar(10) COMMENT '支付方式',
+  create_time datetime COMMENT '创建时间',
+	create_user varchar(20) COMMENT '创建者',
+  update_time datetime COMMENT '修改时间',
+	update_user varchar(20) COMMENT '更新者',
+  state varchar(20) COMMENT '状态',
+	memo varchar(200) COMMENT '备注',
+  deal_date datetime COMMENT '成交时间',
+  taobao_code varchar(20) COMMENT '淘宝订单号',
+  customer_name int(20) COMMENT '客户姓名',
+  customer_tel varchar(20) COMMENT '客户电话',
+  customer_postcode varchar(10) COMMENT '客户邮编',
+  customer_district1_id int(4) COMMENT '收件地区一级',
+  customer_district2_id int(4) COMMENT '收件地区二级',
+  customer_district3_id int(4) COMMENT '收件地区三级',
+  customer_address varchar(200) COMMENT '收件地址',
+	PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+

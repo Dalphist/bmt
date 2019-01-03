@@ -1,0 +1,4 @@
+spring boot 项目
+mysql,mybatis
+
+整合了 mybatis 分页，mybatis自动生成代码
