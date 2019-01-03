@@ -1,17 +1,12 @@
 package com.djf.bmt.project.system.user.controller;
 
+import static com.djf.bmt.framework.web.domain.AjaxResult.success;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.djf.bmt.framework.web.domain.AjaxResult;
-
-import static com.djf.bmt.framework.web.domain.AjaxResult.success;
-
-import javax.security.auth.Subject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class LoginController {
