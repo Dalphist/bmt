@@ -1,17 +1,27 @@
 package bmt.common.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 import bmt.common.beans.ResultBean;
 import bmt.common.exception.CheckException;
 import bmt.common.exception.UnloginException;
 
+@Aspect
+@Component
 public class ControllerAOP {
+	
+	@Pointcut(value = "execution(public bmt.common.beans.ResultBean *(..)))")
+    public void handlerResultBeanMethod() {
+    }
+	
+	@Around("handlerResultBeanMethod()")
 	public Object handlerControllerMethod(ProceedingJoinPoint pjp) {
 		long startTime = System.currentTimeMillis();
-
 		ResultBean<?> result;
-
 		try {
 			result = (ResultBean<?>) pjp.proceed();
 //	      logger.info(pjp.getSignature() + "use time:" + (System.currentTimeMillis() - startTime));
@@ -21,6 +31,7 @@ public class ControllerAOP {
 
 		return result;
 	}
+ 
 
 	private ResultBean<?> handlerException(ProceedingJoinPoint pjp, Throwable e) {
 		ResultBean<?> result = new ResultBean();

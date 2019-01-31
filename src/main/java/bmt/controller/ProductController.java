@@ -35,4 +35,11 @@ public class ProductController {
     	String id = productService.addProduct(product);
         return new ResultBean<String>(id);
     }
+    
+    @PostMapping("/test")
+    @ResponseBody
+    public ResultBean<String> test(){
+    	System.out.println("test");
+    	return new ResultBean<String>("");
+    }
 }
