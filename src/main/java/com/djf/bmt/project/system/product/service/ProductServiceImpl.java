@@ -22,4 +22,12 @@ public class ProductServiceImpl implements ProductService {
         List<Product> list = productMapper.selectProductList();
         return new PageInfo<>(list);
     }
+
+	@Override
+	public String addProduct(Product product) {
+		productMapper.addProduct(product);
+		return product.getId();
+	}
+    
+    
 }

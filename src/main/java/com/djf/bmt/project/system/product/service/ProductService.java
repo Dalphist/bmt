@@ -5,4 +5,6 @@ import com.github.pagehelper.PageInfo;
 
 public interface ProductService {
     public PageInfo<Product> selectProductList();
+    
+    public String addProduct(Product product);
 }

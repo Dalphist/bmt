@@ -8,4 +8,6 @@ public interface ProductMapper
 {
     public List<Product> selectProductList();
 
+	public Integer addProduct(Product product);
+
 }

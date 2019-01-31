@@ -7,4 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectProductList"  resultType="java.util.HashMap">
 		select * from product
 	</select>
+	
+	<insert id="addProduct"  parameterType="com.djf.bmt.project.system.product.entity.Product" keyProperty="id">
+		insert into product (name,category_id) values (#{name},#{categoryId})
+	</insert>
 </mapper>
