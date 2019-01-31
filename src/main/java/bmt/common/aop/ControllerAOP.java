@@ -4,6 +4,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import bmt.common.beans.ResultBean;
@@ -13,6 +15,7 @@ import bmt.common.exception.UnloginException;
 @Aspect
 @Component
 public class ControllerAOP {
+	private static final Logger logger = LoggerFactory.getLogger(ControllerAOP.class);
 	
 	@Pointcut(value = "execution(public bmt.common.beans.ResultBean *(..)))")
     public void handlerResultBeanMethod() {
@@ -24,7 +27,7 @@ public class ControllerAOP {
 		ResultBean<?> result;
 		try {
 			result = (ResultBean<?>) pjp.proceed();
-//	      logger.info(pjp.getSignature() + "use time:" + (System.currentTimeMillis() - startTime));
+			logger.info(pjp.getSignature() + "use time:" + (System.currentTimeMillis() - startTime));
 		} catch (Throwable e) {
 			result = handlerException(pjp, e);
 		}
