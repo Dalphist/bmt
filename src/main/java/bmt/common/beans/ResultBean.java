@@ -1,14 +1,14 @@
-package com.djf.bmt.framework.web.domain;
+package bmt.common.beans;
 
 import java.io.Serializable;
 
 public class ResultBean<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final int NO_LOGIN = -1;
-	private static final int SUCCESS = 0;
-	private static final int FAIL = 1;
-	private static final int NO_PERMISSION = 2;
+	public static final int NO_LOGIN = -1;
+	public static final int SUCCESS = 0;
+	public static final int FAIL = 1;
+	public static final int NO_PERMISSION = 2;
 	
 	private String msg = "success";
 	private int code = SUCCESS;

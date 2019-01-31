@@ -1,8 +1,8 @@
-package com.djf.bmt.project.system.product.mapper;
+package bmt.mapper;
 
 import java.util.List;
 
-import com.djf.bmt.project.system.product.entity.Product;
+import bmt.entity.Product;
 
 public interface ProductMapper
 {

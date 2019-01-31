@@ -1,4 +1,4 @@
-package com.djf.bmt.project.system.product.controller;
+package bmt.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.djf.bmt.framework.web.domain.ResultBean;
-import com.djf.bmt.project.system.product.entity.Product;
-import com.djf.bmt.project.system.product.service.ProductServiceImpl;
 import com.github.pagehelper.PageInfo;
+
+import bmt.common.beans.ResultBean;
+import bmt.entity.Product;
+import bmt.service.ProductServiceImpl;
 
 @Controller
 @RequestMapping("/product")

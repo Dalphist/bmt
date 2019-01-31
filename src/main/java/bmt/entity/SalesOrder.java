@@ -1,4 +1,4 @@
-package com.djf.bmt.project.system.product.entity;
+package bmt.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;

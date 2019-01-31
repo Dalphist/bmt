@@ -1,4 +1,4 @@
-package com.djf.bmt.project.system.product.entity;
+package bmt.entity;
 
 /**
  * 商品实体类

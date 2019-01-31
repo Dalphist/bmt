@@ -1,7 +1,8 @@
-package com.djf.bmt.project.system.product.service;
+package bmt.service;
 
-import com.djf.bmt.project.system.product.entity.Product;
 import com.github.pagehelper.PageInfo;
+
+import bmt.entity.Product;
 
 public interface ProductService {
     public PageInfo<Product> selectProductList();

@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.djf.bmt.project.system.product.mapper.ProductMapper">
+<mapper namespace="bmt.mapper.ProductMapper">
 
 	<select id="selectProductList"  resultType="java.util.HashMap">
 		select * from product
 	</select>
 	
-	<insert id="addProduct"  parameterType="com.djf.bmt.project.system.product.entity.Product" keyProperty="id">
+	<insert id="addProduct"  parameterType="bmt.entity.Product" keyProperty="id">
 		insert into product (name,category_id) values (#{name},#{categoryId})
 	</insert>
 </mapper>
