@@ -47,7 +47,7 @@ public class ControllerAOP {
 			result.setMsg("Unlogin");
 			result.setCode(ResultBean.NO_LOGIN);
 		} else {
-//			logger.error(pjp.getSignature() + " error ", e);
+			logger.error(pjp.getSignature() + " error ", e);
 			// TODO 未知的异常，应该格外注意，可以发送邮件通知等
 			result.setMsg(e.toString());
 			result.setCode(ResultBean.FAIL);

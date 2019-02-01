@@ -58,3 +58,19 @@ CREATE TABLE sales_order (
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+-- 用户
+CREATE TABLE `bmt`.`user`(  
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(80) NOT NULL,
+  `password` VARCHAR(80) NOT NULL,
+  `role_id` INT(10),
+  PRIMARY KEY (`id`)
+);
+
+-- 角色
+CREATE TABLE `bmt`.`role`(  
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `role_name` VARCHAR(80),
+  PRIMARY KEY (`id`)
+);
+
