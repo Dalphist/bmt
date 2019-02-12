@@ -14,8 +14,15 @@ import bmt.common.exception.UnloginException;
 
 @Aspect
 @Component
-public class ControllerAOP {
-	private static final Logger logger = LoggerFactory.getLogger(ControllerAOP.class);
+
+/**
+* Title: ControllerAop  
+* Description:自用AOP
+* @author Dalphist  
+* @date 2019年2月11日
+ */
+public class ControllerAop {
+	private static final Logger logger = LoggerFactory.getLogger(ControllerAop.class);
 	
 	@Pointcut(value = "execution(public bmt.common.beans.ResultBean *(..)))")
     public void handlerResultBeanMethod() {
@@ -37,6 +44,7 @@ public class ControllerAOP {
  
 
 	private ResultBean<?> handlerException(ProceedingJoinPoint pjp, Throwable e) {
+		@SuppressWarnings("rawtypes")
 		ResultBean<?> result = new ResultBean();
 
 		// 已知异常

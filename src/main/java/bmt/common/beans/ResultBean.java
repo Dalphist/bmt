@@ -2,6 +2,12 @@ package bmt.common.beans;
 
 import java.io.Serializable;
 
+/**
+* Title: ResultBean  
+* Description:结果Bean，所有的Controller使用，配合AOP
+* @author Dalphist  
+* @date 2019年2月11日
+ */
 public class ResultBean<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,6 +33,26 @@ public class ResultBean<T> implements Serializable {
 		super();
 		this.msg = e.toString();
 		this.code = FAIL;
+	}
+	
+	public ResultBean<T> success(){
+		this.setCode(SUCCESS);
+		return this;
+	}
+	
+	public ResultBean<T> fail(){
+		this.setCode(FAIL);
+		return this;
+	}
+	
+	public ResultBean<T> noLogin(){
+		this.setCode(NO_LOGIN);
+		return this;
+	}
+	
+	public ResultBean<T> message(String msg){
+		this.setMsg(msg);
+		return this;
 	}
 	
 	public String getMsg() {

@@ -1,7 +1,10 @@
 package bmt.entity;
 
 /**
- * 商品实体类
+* Title: Product  
+* Description:商品实体类
+* @author Dalphist  
+* @date 2019年2月11日
  */
 public class Product {
     private String id;

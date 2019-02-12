@@ -15,6 +15,12 @@ import bmt.common.beans.ResultBean;
 import bmt.entity.Product;
 import bmt.service.ProductServiceImpl;
 
+/**
+* Title: ProductController  
+* Description:商品Controller
+* @author Dalphist  
+* @date 2019年2月11日
+ */
 @Controller
 @RequestMapping("/product")
 public class ProductController {

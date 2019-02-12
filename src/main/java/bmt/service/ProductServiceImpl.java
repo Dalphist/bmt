@@ -11,6 +11,12 @@ import com.github.pagehelper.PageInfo;
 import bmt.entity.Product;
 import bmt.mapper.ProductMapper;
 
+/**
+* Title: ProductServiceImpl  
+* Description:
+* @author Dalphist  
+* @date 2019年2月11日
+ */
 @Service
 public class ProductServiceImpl implements ProductService {
 
