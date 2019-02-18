@@ -44,9 +44,7 @@ public class ControllerAop {
  
 
 	private ResultBean<?> handlerException(ProceedingJoinPoint pjp, Throwable e) {
-		@SuppressWarnings("rawtypes")
-		ResultBean<?> result = new ResultBean();
-
+		ResultBean<String> result = new ResultBean<String>();
 		// 已知异常
 		if (e instanceof CheckException) {
 			result.setMsg(e.getLocalizedMessage());
@@ -57,10 +55,8 @@ public class ControllerAop {
 		} else {
 			logger.error(pjp.getSignature() + " error ", e);
 			// TODO 未知的异常，应该格外注意，可以发送邮件通知等
-			result.setMsg(e.toString());
-			result.setCode(ResultBean.FAIL);
+			result.fail().message(e.toString());
 		}
-
 		return result;
 	}
 }

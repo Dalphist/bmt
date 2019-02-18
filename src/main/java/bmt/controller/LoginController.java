@@ -19,15 +19,15 @@ public class LoginController {
     	ResultBean<String> resultBean = new ResultBean<String>();
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password,rememberMe);
-        try
-        {
+//        try
+//        {
             subject.login(token);
             return resultBean.success();
-        }
-        catch (AuthenticationException e)
-        {
-            String msg = "用户或密码错误";
-            return resultBean.fail().message(msg);
-        }
+//        }
+//        catch (AuthenticationException e)
+//        {
+//            String msg = "用户或密码错误";
+//            return resultBean.fail().message(msg);
+//        }
     }
 }
