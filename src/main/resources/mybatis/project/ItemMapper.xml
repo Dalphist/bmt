@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bmt.mapper.ItemMapper">
+  <resultMap id="BaseResultMap" type="bmt.entity.Item">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="game_id" jdbcType="INTEGER" property="gameId" />
+    <result column="ord" jdbcType="INTEGER" property="ord" />
+    <result column="like_flag" jdbcType="INTEGER" property="likeFlag" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="opt_user" jdbcType="INTEGER" property="optUser" />
+    <result column="opt_time" jdbcType="VARCHAR" property="optTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, code, unit, attribute, category_id, game_id, ord, like_flag, state, opt_user,opt_time
+  </sql>
+  
+  <select id="selectItemList" parameterType="bmt.entity.Item" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from item
+  </select>
+  
+  <insert id="insertItem" parameterType="bmt.entity.Item" keyProperty="id">
+    insert into item (id, name, code, 
+      unit, attribute, category_id, 
+      game_id, ord, like_flag, 
+      state, opt_user, opt_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{unit,jdbcType=VARCHAR}, #{attribute,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, 
+      #{gameId,jdbcType=INTEGER}, #{ord,jdbcType=INTEGER}, #{likeFlag,jdbcType=INTEGER}, 
+      #{state,jdbcType=INTEGER}, #{optUser,jdbcType=INTEGER}, #{optTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  
+  <!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <insert id="insertSelective" parameterType="bmt.entity.Item">
+    insert into item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="attribute != null">
+        attribute,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="gameId != null">
+        game_id,
+      </if>
+      <if test="ord != null">
+        ord,
+      </if>
+      <if test="likeFlag != null">
+        like_flag,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="optUser != null">
+        opt_user,
+      </if>
+      <if test="optTime != null">
+        opt_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="gameId != null">
+        #{gameId,jdbcType=INTEGER},
+      </if>
+      <if test="ord != null">
+        #{ord,jdbcType=INTEGER},
+      </if>
+      <if test="likeFlag != null">
+        #{like_flag,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="optUser != null">
+        #{optUser,jdbcType=INTEGER},
+      </if>
+      <if test="optTime != null">
+        #{optTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="bmt.entity.Item">
+    update item
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="gameId != null">
+        game_id = #{gameId,jdbcType=INTEGER},
+      </if>
+      <if test="ord != null">
+        ord = #{ord,jdbcType=INTEGER},
+      </if>
+      <if test="likeFlag != null">
+        like_flag = #{likeFlag,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="optUser != null">
+        opt_user = #{optUser,jdbcType=INTEGER},
+      </if>
+      <if test="optTime != null">
+        opt_time = #{optTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="bmt.entity.Item">
+    update item
+    set name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      attribute = #{attribute,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=INTEGER},
+      game_id = #{gameId,jdbcType=INTEGER},
+      ord = #{ord,jdbcType=INTEGER},
+      like_flag = #{likeFlag,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      opt_user = #{optUser,jdbcType=INTEGER},
+      opt_time = #{optTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

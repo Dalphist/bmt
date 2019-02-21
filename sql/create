@@ -15,22 +15,6 @@ CREATE TABLE product (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- 随便插点数据
-insert product (id,bar_code,name,category_id,stock_warn,unit)
-VALUES
-('1','3322','袜子1','2',10,'个'),
-('2','3322','袜子2','2',10,'个'),
-('3','3322','袜子3','2',10,'个'),
-('4','3322','袜子4','2',10,'个'),
-('5','3322','袜子5','2',10,'个'),
-('6','3322','袜子6','2',10,'个'),
-('7','3322','袜子7','2',10,'个'),
-('8','3322','袜子8','2',10,'个'),
-('9','3322','袜子9','2',10,'个'),
-('10','3322','袜子10','2',10,'个'),
-('11','3322','袜子11','2',10,'个'),
-('12','3322','袜子12','2',10,'个'),
-('13','3322','袜子13','2',10,'个');
 
 -- 销售订单
 CREATE TABLE sales_order (
@@ -73,4 +57,37 @@ CREATE TABLE `bmt`.`role`(
   `role_name` VARCHAR(80),
   PRIMARY KEY (`id`)
 );
+
+-- 物品
+CREATE TABLE `bmt`.`item`(  
+  `id` INT(8) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50),
+  `code` VARCHAR(10),
+  `unit` VARCHAR(10),
+  `attribute` VARCHAR(100),
+  `category_id` INT(8),
+  `game_id` INT(8),
+  `ord` INT(8),
+  `like_flag` INT(2) COMMENT '收藏',
+  `state` INT(4),
+  `opt_user` INT(8),
+  `opt_time` VARCHAR(20),
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `item_code` (`code`),
+  UNIQUE INDEX `item_category` (`category_id`),
+  UNIQUE INDEX `item_game` (`game_id`)
+) CHARSET=utf8;
+
+-- 分类
+CREATE TABLE `bmt`.`category`(  
+  `id` INT(8) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20),
+  `parent_id` INT(8),
+  `game_id` INT(8),
+  `opt_user` INT(8),
+  `opt_time` VARCHAR(20),
+  PRIMARY KEY (`id`)
+);
+
+
 
