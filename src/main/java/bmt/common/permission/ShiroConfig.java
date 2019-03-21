@@ -11,13 +11,12 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Title: ShiroConfig Description:Shiro 配置类
- * 
  * @author Dalphist
  * @date 2019年2月11日
  */
 @Configuration
 public class ShiroConfig {
-	@Bean
+	//@Bean
 	public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		// 必须设置 SecurityManager
@@ -50,7 +49,7 @@ public class ShiroConfig {
 	/**
 	 * 注入 securityManager
 	 */
-	@Bean
+	//@Bean
 	public SecurityManager securityManager() {
 		DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 		// 设置realm.
@@ -62,7 +61,7 @@ public class ShiroConfig {
 	 * 自定义身份认证 realm; 必须写这个类，并加上 @Bean 注解，目的是注入 CustomRealm， 否则会影响 CustomRealm类
 	 * 中其他类的依赖注入
 	 */
-	@Bean
+	//@Bean
 	public CustomRealm customRealm() {
 		return new CustomRealm();
 	}
