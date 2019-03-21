@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class ShiroConfig {
-	//@Bean
+	@Bean
 	public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		// 必须设置 SecurityManager
@@ -28,13 +28,22 @@ public class ShiroConfig {
 
 		// 设置拦截器
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-		// 游客，开发权限
-		filterChainDefinitionMap.put("/guest/**", "anon");
-		filterChainDefinitionMap.put("/index/**", "anon");
-		// 用户，需要角色权限 “user”
-		filterChainDefinitionMap.put("/user/**", "roles[user]");
-		// 管理员，需要角色权限 “admin”
-		filterChainDefinitionMap.put("/admin/**", "roles[admin]");
+		// 对静态资源设置匿名访问
+        filterChainDefinitionMap.put("/favicon.ico**", "anon");
+        filterChainDefinitionMap.put("/ruoyi.png**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/docs/**", "anon");
+        filterChainDefinitionMap.put("/fonts/**", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/ajax/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/bmt/**", "anon");
+        filterChainDefinitionMap.put("/druid/**", "anon");
+        filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
+        // 退出 logout地址，shiro去清除session
+        filterChainDefinitionMap.put("/logout", "logout");
+        // 不需要拦截的访问
+        filterChainDefinitionMap.put("/login", "anon,captchaValidate");
 		// 开放登陆接口
 		filterChainDefinitionMap.put("/login", "anon");
 		// 其余接口一律拦截
@@ -49,7 +58,7 @@ public class ShiroConfig {
 	/**
 	 * 注入 securityManager
 	 */
-	//@Bean
+	@Bean
 	public SecurityManager securityManager() {
 		DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 		// 设置realm.
@@ -61,7 +70,7 @@ public class ShiroConfig {
 	 * 自定义身份认证 realm; 必须写这个类，并加上 @Bean 注解，目的是注入 CustomRealm， 否则会影响 CustomRealm类
 	 * 中其他类的依赖注入
 	 */
-	//@Bean
+	@Bean
 	public CustomRealm customRealm() {
 		return new CustomRealm();
 	}
