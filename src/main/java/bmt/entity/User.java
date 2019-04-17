@@ -8,9 +8,12 @@ package bmt.entity;
  */
 public class User {
     private String id;
-    private String username;
+    private String loginName;	//登陆帐号
+    private String username;	//用户昵称
     private String password;
     private String roleId;
+    
+    
 	public String getId() {
 		return id;
 	}
@@ -35,6 +38,11 @@ public class User {
 	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
-
+	public String getLoginName() {
+		return loginName;
+	}
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
     
 }
