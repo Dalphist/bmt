@@ -9,4 +9,5 @@ public interface UserService {
 	public String getPassword(String username);
 
 	public String getRole(String username);
+	
 }

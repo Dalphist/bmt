@@ -7,7 +7,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.subject.Subject;
 
-import bmt.entity.User;
+import bmt.entity.system.SysUser;
 
 /**
  * Shrio 工具类
@@ -31,19 +31,19 @@ public class ShiroUtils
         getSubject().logout();
     }
 
-    public static User getSysUser()
+    public static SysUser getSysUser()
     {
-    	User user = null;
+    	SysUser user = null;
         Object obj = getSubject().getPrincipal();
         if (StringUtils.isNotNull(obj))
         {
-            user = new User();
+            user = new SysUser();
             BeanUtils.copyBeanProp(user, obj);
         }
         return user;
     }
 
-    public static void setSysUser(User user)
+    public static void setSysUser(SysUser user)
     {
         Subject subject = getSubject();
         PrincipalCollection principalCollection = subject.getPrincipals();
@@ -60,9 +60,9 @@ public class ShiroUtils
 //        realm.clearCachedAuthorizationInfo();
 //    }
 
-    public static String getUserId()
+    public static Long getUserId()
     {
-        return getSysUser().getId();
+        return getSysUser().getUserId();
     }
 
     public static String getLoginName()

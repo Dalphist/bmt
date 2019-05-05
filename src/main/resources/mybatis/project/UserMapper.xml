@@ -5,11 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="bmt.mapper.UserMapper">
 
 	<select id="getPassword" parameterType="String"  resultType="String">
-		SELECT PASSWORD FROM USER WHERE username = #{username}
+		SELECT PASSWORD FROM sys_user WHERE username = #{username}
 	</select>
 	
 	<select id="getRole"  parameterType="String" resultType="String">
-		SELECT r.role_name FROM USER u JOIN role r ON u.role_id = r.id WHERE username = #{username}
+		SELECT r.role_name FROM sys_user u JOIN sys_role r ON u.role_id = r.id WHERE username = #{username}
+	</select>
+	
+	<select id="login"  parameterType="String" resultType="String">
+		SELECT r.role_name FROM sys_user u JOIN sys_role r ON u.role_id = r.id WHERE username = #{username}
 	</select>
 	
 </mapper>
