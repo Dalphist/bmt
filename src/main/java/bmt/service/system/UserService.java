@@ -1,4 +1,6 @@
-package bmt.service;
+package bmt.service.system;
+
+import bmt.entity.system.SysUser;
 
 /**
  * Title: UserService Description:
@@ -6,8 +8,7 @@ package bmt.service;
  * @date 2019年2月11日
  */
 public interface UserService {
-	public String getPassword(String username);
-
-	public String getRole(String username);
+	
+	public SysUser selectUserByLoginName(String userName);
 	
 }

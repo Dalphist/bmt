@@ -1,5 +1,7 @@
 package bmt.mapper;
 
+import bmt.entity.system.SysUser;
+
 /**
 * Title: UserMapper  
 * Description:角色Mapper
@@ -8,8 +10,6 @@ package bmt.mapper;
  */
 public interface UserMapper
 {
-    public String getPassword(String username);
-    
-    public String getRole(String username);
+	public SysUser selectUserByLoginName(String userName);
 
 }

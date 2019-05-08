@@ -1,7 +1,9 @@
-package bmt.service;
+package bmt.service.system;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import bmt.entity.system.SysUser;
 import bmt.mapper.UserMapper;
 
 /**
@@ -10,19 +12,15 @@ import bmt.mapper.UserMapper;
  * @author Dalphist
  * @date 2019年2月11日
  */
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserMapper userMapper;
 
 	@Override
-	public String getPassword(String username) {
-		return userMapper.getPassword(username);
-	}
-
-	@Override
-	public String getRole(String username) {
-		return userMapper.getRole(username);
+	public SysUser selectUserByLoginName(String userName) {
+		 return userMapper.selectUserByLoginName(userName);
 	}
 
 }

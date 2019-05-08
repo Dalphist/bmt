@@ -9,6 +9,7 @@ import bmt.entity.system.SysUser;
 * @date 2019年4月30日
  */
 public interface LoginService {
+	
 	public SysUser login(String username,String password);
 	
 }

@@ -71,7 +71,7 @@ public class ShiroConfig {
 	 * 中其他类的依赖注入
 	 */
 	@Bean
-	public CustomRealm customRealm() {
-		return new CustomRealm();
+	public UserRealm customRealm() {
+		return new UserRealm();
 	}
 }
