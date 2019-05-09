@@ -1,4 +1,4 @@
-package bmt.controller;
+package bmt.controller.system;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
