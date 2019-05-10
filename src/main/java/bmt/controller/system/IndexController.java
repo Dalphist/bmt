@@ -37,6 +37,6 @@ public class IndexController extends BaseController {
     public String main(ModelMap mmap)
     {
 //        mmap.put("version", Global.getVersion());
-        return "/system/main";
+        return "system/main";
     }
 }
