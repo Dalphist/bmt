@@ -1,5 +1,7 @@
 package bmt.mapper;
 
+import java.util.List;
+
 import bmt.entity.system.SysUser;
 
 /**
@@ -11,5 +13,7 @@ import bmt.entity.system.SysUser;
 public interface UserMapper
 {
 	public SysUser selectUserByLoginName(String userName);
+
+	public List<SysUser> selectUserList(SysUser user);
 
 }

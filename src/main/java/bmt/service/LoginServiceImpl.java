@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import bmt.common.exception.user.UserNotExistsException;
 import bmt.entity.system.SysUser;
 import bmt.service.system.SysPasswordService;
-import bmt.service.system.UserService;
+import bmt.service.system.SysUserService;
 
 /**
  * Title: UserServiceImpl Description:
@@ -18,7 +18,7 @@ import bmt.service.system.UserService;
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
-	private UserService userService;
+	private SysUserService userService;
 	
 	@Autowired
     private SysPasswordService passwordService;
