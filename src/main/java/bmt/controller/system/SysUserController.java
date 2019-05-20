@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,8 @@ import bmt.common.beans.TableDataInfo;
 import bmt.controller.BaseController;
 import bmt.entity.system.SysUser;
 import bmt.service.system.SysPasswordService;
+import bmt.service.system.SysPostService;
+import bmt.service.system.SysRoleService;
 import bmt.service.system.SysUserService;
 
 /**
@@ -30,11 +33,11 @@ public class SysUserController extends BaseController
     @Autowired
     private SysUserService userService;
 
-//    @Autowired
-//    private ISysRoleService roleService;
-//
-//    @Autowired
-//    private ISysPostService postService;
+    @Autowired
+    private SysRoleService roleService;
+
+    @Autowired
+    private SysPostService postService;
 
     @Autowired
     private SysPasswordService passwordService;
@@ -55,6 +58,16 @@ public class SysUserController extends BaseController
         List<SysUser> list = userService.selectUserList(user);
         return getDataTable(list);
     }
+    
+	/**
+	 * 新增用户
+	 */
+	@GetMapping("/add")
+	public String add(ModelMap mmap) {
+		mmap.put("roles", roleService.selectRoleAll());
+		mmap.put("posts", postService.selectPostAll());
+		return prefix + "/add";
+	}
 
 //    @Log(title = "用户管理", businessType = BusinessType.EXPORT)
 //    @RequiresPermissions("system:user:export")
@@ -89,16 +102,7 @@ public class SysUserController extends BaseController
 //        return util.importTemplateExcel("用户数据");
 //    }
 //
-//    /**
-//     * 新增用户
-//     */
-//    @GetMapping("/add")
-//    public String add(ModelMap mmap)
-//    {
-//        mmap.put("roles", roleService.selectRoleAll());
-//        mmap.put("posts", postService.selectPostAll());
-//        return prefix + "/add";
-//    }
+
 //
 //    /**
 //     * 新增保存用户

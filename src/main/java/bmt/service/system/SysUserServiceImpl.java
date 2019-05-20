@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bmt.common.annotation.DataScope;
 import bmt.entity.system.SysUser;
 import bmt.mapper.UserMapper;
 
@@ -26,6 +27,7 @@ public class SysUserServiceImpl implements SysUserService {
 	}
 
 	@Override
+	@DataScope(tableAlias = "u")
 	public List<SysUser> selectUserList(SysUser user) {
 		return userMapper.selectUserList(user);
 	}

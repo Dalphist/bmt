@@ -225,6 +225,14 @@ public class SysUser extends BaseEntity{
 		this.postIds = postIds;
 	}
     
-    
+	public boolean isAdmin()
+    {
+        return isAdmin(this.userId);
+    }
+
+    public static boolean isAdmin(Long userId)
+    {
+        return userId != null && 1L == userId;
+    }
     
 }
