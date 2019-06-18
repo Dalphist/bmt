@@ -10,7 +10,6 @@ import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import bmt.common.exception.user.UserPasswordNotMatchException;
 import bmt.entity.system.SysUser;
 
 /**
@@ -68,7 +67,7 @@ public class SysPasswordImpl implements SysPasswordService {
 
     public void clearLoginRecordCache(String username)
     {
-        loginRecordCache.remove(username);
+//        loginRecordCache.remove(username);
     }
 
     public String encryptPassword(String username, String password, String salt)

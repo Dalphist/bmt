@@ -5,13 +5,19 @@ import java.util.List;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import bmt.common.annotation.Log;
+import bmt.common.beans.ResultBean;
 import bmt.common.beans.TableDataInfo;
+import bmt.common.enums.BusinessType;
+import bmt.common.utils.ShiroUtils;
+import bmt.common.utils.StringUtils;
 import bmt.controller.BaseController;
 import bmt.entity.system.SysUser;
 import bmt.service.system.SysPasswordService;
@@ -69,6 +75,24 @@ public class SysUserController extends BaseController
 		return prefix + "/add";
 	}
 
+	/**
+	 * 新增保存用户
+	 */
+	@RequiresPermissions("system:user:add")
+	@Log(title = "用户管理", businessType = BusinessType.INSERT)
+	@PostMapping("/add")
+	@Transactional(rollbackFor = Exception.class)
+	@ResponseBody
+	public ResultBean<String> addSave(SysUser user) {
+		if (StringUtils.isNotNull(user.getUserId()) && SysUser.isAdmin(user.getUserId())) {
+			return error("不允许修改超级管理员用户");
+		}
+		user.setSalt(ShiroUtils.randomSalt());
+		user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
+		user.setCreateBy(ShiroUtils.getLoginName());
+		return toResultBean(userService.insertUser(user));
+	}
+
 //    @Log(title = "用户管理", businessType = BusinessType.EXPORT)
 //    @RequiresPermissions("system:user:export")
 //    @PostMapping("/export")
@@ -104,25 +128,7 @@ public class SysUserController extends BaseController
 //
 
 //
-//    /**
-//     * 新增保存用户
-//     */
-//    @RequiresPermissions("system:user:add")
-//    @Log(title = "用户管理", businessType = BusinessType.INSERT)
-//    @PostMapping("/add")
-//    @Transactional(rollbackFor = Exception.class)
-//    @ResponseBody
-//    public AjaxResult addSave(SysUser user)
-//    {
-//        if (StringUtils.isNotNull(user.getUserId()) && SysUser.isAdmin(user.getUserId()))
-//        {
-//            return error("不允许修改超级管理员用户");
-//        }
-//        user.setSalt(ShiroUtils.randomSalt());
-//        user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
-//        user.setCreateBy(ShiroUtils.getLoginName());
-//        return toAjax(userService.insertUser(user));
-//    }
+
 //
 //    /**
 //     * 修改用户
